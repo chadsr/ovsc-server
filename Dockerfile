@@ -2,7 +2,8 @@ FROM gitpod/openvscode-server:latest
 
 USER root
 
-RUN add-apt-repository ppa:longsleep/golang-backports \
+RUN apt install software-properties-common \
+    && add-apt-repository ppa:longsleep/golang-backports \
     && apt-get update \
     && apt-get install golang-go rustc cargo nodejs npm snap python \
     && snap install hugo
