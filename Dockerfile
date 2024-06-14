@@ -20,6 +20,7 @@ RUN \
     rust-lang.rust-analyzer \
     ms-pyright.pyright \
     redhat.vscode-yaml \
+    fwcd.kotlin \
     waderyan.gitblame \
     catppuccin.catppuccin-vsc \
     catppuccin.catppuccin-vsc-icons \
