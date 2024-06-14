@@ -25,6 +25,7 @@ RUN \
     waderyan.gitblame \
     catppuccin.catppuccin-vsc \
     catppuccin.catppuccin-vsc-icons \
+    streetsidesoftware/code-spell-checker \
     )\
     # Install the $exts
     && for ext in "${exts[@]}"; do ${OPENVSCODE} --install-extension "${ext}"; done
