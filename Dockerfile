@@ -22,8 +22,9 @@ RUN \
     redhat.vscode-yaml \
     fwcd.kotlin \
     sswg.swift-lang \
-    svelte/svelte-vscode \
+    svelte.svelte-vscode \
     waderyan.gitblame \
+    esbenp.prettier-vscode \
     catppuccin.catppuccin-vsc \
     catppuccin.catppuccin-vsc-icons \
     streetsidesoftware/code-spell-checker \
