@@ -22,6 +22,7 @@ RUN \
     redhat.vscode-yaml \
     fwcd.kotlin \
     sswg.swift-lang \
+    svelte/svelte-vscode \
     waderyan.gitblame \
     catppuccin.catppuccin-vsc \
     catppuccin.catppuccin-vsc-icons \
