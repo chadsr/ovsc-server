@@ -21,6 +21,7 @@ RUN \
     ms-pyright.pyright \
     redhat.vscode-yaml \
     fwcd.kotlin \
+    sswg.swift-lang \
     waderyan.gitblame \
     catppuccin.catppuccin-vsc \
     catppuccin.catppuccin-vsc-icons \
