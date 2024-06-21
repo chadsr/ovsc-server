@@ -9,7 +9,16 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Install latest go version
+ENV GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).linux-${ARCH}.tar.gz"
+RUN wget "${GO_ARCHIVE}" \
+    && tar -C /usr/local -xzf ${GO_ARCHIVE} \
+    && rm -f ${GO_ARCHIVE}
+
 USER openvscode-server
+
+WORKDIR ${HOME}
+COPY .bash_profile .bash_profile
 
 ENV OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
 ENV OPENVSCODE="${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server"
