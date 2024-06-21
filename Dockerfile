@@ -2,9 +2,12 @@ FROM gitpod/openvscode-server:1.90.1
 
 USER root
 
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y install htop python3
+    && apt-get -y install --no-install-recommends htop python3 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 USER openvscode-server
 
