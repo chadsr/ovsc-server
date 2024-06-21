@@ -11,7 +11,7 @@ RUN apt-get update \
 
 # Install latest go version
 ENV GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).linux-${ARCH}.tar.gz"
-RUN wget "${GO_ARCHIVE}" \
+RUN wget --progress=dot "${GO_ARCHIVE}" \
     && tar -C /usr/local -xzf ${GO_ARCHIVE} \
     && rm -f ${GO_ARCHIVE}
 
