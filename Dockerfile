@@ -6,6 +6,12 @@ RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get -y install htop python3
 
+# Install latest go version
+ENV GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).linux-${ARCH}.tar.gz"
+RUN wget "${GO_ARCHIVE}" \
+    && tar -C /usr/local -xzf ${GO_ARCHIVE} \
+    && rm -f ${GO_ARCHIVE}
+
 USER openvscode-server
 
 ENV OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
@@ -31,3 +37,5 @@ RUN \
     )\
     # Install the $exts
     && for ext in "${exts[@]}"; do ${OPENVSCODE} --install-extension "${ext}"; done
+
+RUN CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@latest
