@@ -13,8 +13,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install latest go version
-RUN export GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).${TARGETOS}-${TARGETARCH}.tar.gz" \
-    && wget --progress=dot https://go.dev/dl/${GO_ARCHIVE} \
+RUN export GO_ARCHIVE="$(wget -qO- https://go.dev/VERSION?m=text | head -n1).${TARGETOS}-${TARGETARCH}.tar.gz" \
+    && wget https://go.dev/dl/${GO_ARCHIVE} \
     && tar -C /usr/local -xzf ${GO_ARCHIVE} \
     && rm -f ${GO_ARCHIVE}
 
