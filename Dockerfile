@@ -1,5 +1,8 @@
 FROM gitpod/openvscode-server:1.90.1
 
+ARG TARGETOS
+ARG TARGETARCH
+
 USER root
 
 # hadolint ignore=DL3008
@@ -10,7 +13,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install latest go version
-ENV GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).linux-${TARGETARCH}.tar.gz"
+ENV GO_ARCHIVE="$(curl https://go.dev/VERSION?m=text | head -n1).${TARGETOS}-${TARGETARCH}.tar.gz"
 RUN wget --progress=dot "${GO_ARCHIVE}" \
     && tar -C /usr/local -xzf ${GO_ARCHIVE} \
     && rm -f ${GO_ARCHIVE}
