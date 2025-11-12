@@ -29,6 +29,7 @@ RUN apt-get update \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install latest go version
+# hadolint ignore=DL4001
 RUN GO_ARCHIVE="$(wget --progress=dot -qO- https://go.dev/VERSION?m=text | head -n1)"."${TARGETOS}"-"${TARGETARCH}".tar.gz \
     && wget --progress=dot:giga https://go.dev/dl/"${GO_ARCHIVE}" \
     && tar -C /usr/local -xzf "${GO_ARCHIVE}" \
