@@ -81,7 +81,6 @@ RUN \
     charliermarsh.ruff \
     golang.go \
     rust-lang.rust-analyzer \
-    ms-pyright.pyright \
     redhat.java \
     redhat.vscode-yaml \
     fwcd.kotlin \
