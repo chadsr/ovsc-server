@@ -1,0 +1,3 @@
+goose/secrets.yaml
+workspace/*
+!workspace/.gitkeep
