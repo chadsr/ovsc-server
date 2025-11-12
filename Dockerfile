@@ -28,6 +28,7 @@ RUN apt-get update \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install latest go version
+# hadolint ignore=DL4001
 RUN GO_ARCHIVE="$(wget --progress=dot -qO- https://go.dev/VERSION?m=text | head -n1)"."${TARGETOS}"-"${TARGETARCH}".tar.gz \
     && wget --progress=dot:giga https://go.dev/dl/"${GO_ARCHIVE}" \
     && tar -C /usr/local -xzf "${GO_ARCHIVE}" \
@@ -40,13 +41,12 @@ COPY --chown=openvscode-server bash/.bash_profile ${HOME}/.bash_profile
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV BASH_ENV="/home/openvscode-server/.bash_env"
-RUN touch "${BASH_ENV}"
-RUN echo '. "${BASH_ENV}"' >> ~/.bashrc
+# hadolint ignore=SC2016
+RUN touch "${BASH_ENV}" && echo '. "${BASH_ENV}"' >> ~/.bashrc
 
 # Download and install nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | PROFILE="${BASH_ENV}" bash
-RUN echo node > .nvmrc
-RUN nvm install stable && nvm alias default stable
+RUN echo node > .nvmrc && nvm install stable && nvm alias default stable
 
 # Install latest uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
