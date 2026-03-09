@@ -10,19 +10,20 @@ USER root
 RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get -y install --no-install-recommends \
-    git \
+    bzip2 \
     ca-certificates \
+    git \
     htop \
-    python3 \
-    python3-pip \
-    neovim \
+    libdbus-1-3 \
+    libgomp1 \
+    libssl3 \
+    libxcb1 \
     nano \
+    neovim \
     nodejs \
     npm \
-    bzip2 \
-    libssl3 \
-    libdbus-1-3 \
-    libxcb1 \
+    python3 \
+    python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -59,7 +60,6 @@ RUN ~/.cargo/bin/rustup toolchain update
 # Install latest Goose CLI
 ENV GOOSE_DISABLE_KEYRING=true
 RUN curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | CONFIGURE=false bash
-RUN ~/.local/bin/goose update
 
 ENV OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
 ENV OPENVSCODE="${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server"
